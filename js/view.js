@@ -15,13 +15,14 @@ class View {
         this.questionsTotalElement = $('.questions-total');
         this.scoreElement = $('.score');
         this.restartButtonElement = $('.restart-button');
+        this.submitAnswer = $('.submit-answer');
         
         // Callback functions
         this.onChangeQuestionNumber = null;
         this.onAnswerSubmit = null;
 
         // Click event for submitting answers, calls onAnswerClick function (connects event listener to function)
-        this.answersElement.click(this.onAnswerClick.bind(this));
+        this.submitAnswer.click(this.onAnswerClick.bind(this));
 
         // Click function that creates new game (connects event listener to function)
         this.restartButtonElement.click(this.restartGame.bind(this));
@@ -47,15 +48,15 @@ class View {
             // sets answers to variable
             var answer = model.answers[i];
             // prints to answers element. ID set for use in onAnswerClick function
-            this.answersElement.append(`<li><button type="button" id="${i}">${answer}</button></li>`);
+            this.answersElement.append(`<li><input type="radio" id="checkbox${i}" class="css-checkbox" name="answers" value="${i}"><label for="checkbox${i}" class="css-label">${answer}</label></li>`);
         }
     }
 
     // Prototype function to store the submitted answer 
     onAnswerClick(buttonId) {
         // takes the id from the answer the user clicked and stores in the choice variable
-        var choice = parseInt(buttonId.target.id);
-
+        var choice = parseInt(this.answersElement.find('input[name=answers]:checked').val())
+        console.log(choice);
         // Passes the choice to the MODEL's checkAnswer function to determine if correct
         if (this.onAnswerSubmit) {
             this.onAnswerSubmit(choice);
