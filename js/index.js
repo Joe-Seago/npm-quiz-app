@@ -1,4 +1,5 @@
-
+var $ = require('jquery');
+var makeBackgroundRed = require('./background');
 
     /*============ MODEL ============*/
 
@@ -125,12 +126,8 @@
 
 /*============ CONTROLLER ============*/
 
-
-
-
-
-
 $(document).ready(function() {
     questionsTotalElement.text(QUESTIONS.length);
     setQuestion(0);
+    makeBackgroundRed();
 });
