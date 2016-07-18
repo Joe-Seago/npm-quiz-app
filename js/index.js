@@ -51,7 +51,7 @@
         }
     ];
 
-    function checkAnswers(questionIndex) = {
+    function checkAnswers(questionIndex) {
         var question = QUESTIONS[questionIndex];
         if (question.correct === choice) {
             increaseScore();
@@ -125,7 +125,7 @@
 
 /*============ CONTROLLER ============*/
 
-   
+
 
 
 

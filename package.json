@@ -1,25 +1,37 @@
 {
   "name": "npm-build-system",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "main": "js/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "mkdir": "mkdir -p build",
-    "build": "npm run clean && npm run mkdir && npm run build:html && npm run build:css",
-    "watch": "npm run watch:html & npm run watch:css",
+    "build": "npm run clean && npm run mkdir && npm run build:html && npm run build:css && npm run build:js",
+    "watch": "npm run watch:html & npm run watch:css & npm run watch:js",
     "clean": "rm -rf build",
     "build:html": "npm run clean:html && cp index.html build/",
     "watch:html": "npm run build:html && chokidar index.html -c 'npm run build:html'",
     "clean:html": "rm -f build/index.html",
     "build:css": "npm run clean:css && lessc --source-map css/index.less build/$npm_package_name.$npm_package_version.css",
     "watch:css": "npm run build:css && chokidar 'css/**/*.less' -c 'npm run build:css'",
-    "clean:css": "rm -f build/$npm_package_name.$npm_package_version.css build/$npm_package_name.$npm_package_version.css.map"
+    "clean:css": "rm -f build/$npm_package_name.$npm_package_version.css build/$npm_package_name.$npm_package_version.css.map",
+    "build:js": "npm run clean:js && webpack",
+    "watch:js": "npm run build:js && webpack --watch",
+    "clean:js": "rm -f build/$npm_package_name.$npm_package_version.js build/$npm_package_name.$npm_package_version.js.map"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "chokidar-cli": "^1.2.0",
-    "less": "^2.7.1"
-  }
+    "less": "^2.7.1",
+    "webpack": "^1.13.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jbenjaminy/npm-quiz-app.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jbenjaminy/npm-quiz-app/issues"
+  },
+  "homepage": "https://github.com/jbenjaminy/npm-quiz-app#readme",
+  "description": ""
 }
