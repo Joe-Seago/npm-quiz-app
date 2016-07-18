@@ -1,5 +1,18 @@
-@baker-miller-pink: #FF91AF;
+@JoePink: #FF91AF;
+@SierraPink: lighten(@JoePink, 10%);
+@BenPink: darken(@JoePink, 10%);
 
 body {
-    background-color: @baker-miller-pink;
+    background-color: @SierraPink;
+    color: @BenPink;
+}
+
+h1 {
+    color: @JoePink;
+    text-align: center;
+}
+
+.questions-page {
+    margin-left: 10%;
+    ul {list-style-type: none;}
 }
